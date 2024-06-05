@@ -1,10 +1,16 @@
 package com.atividade.mycity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +45,10 @@ public class HomeFragment extends Fragment {
                         tab.setText("Resolvidos");
                         break;
                 }
+                // Define o tamanho do texto do tab
+                SpannableString spannableString = new SpannableString(tab.getText());
+                spannableString.setSpan(new AbsoluteSizeSpan(14, true), 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                tab.setText(spannableString);
             }
         }).attach();
 
