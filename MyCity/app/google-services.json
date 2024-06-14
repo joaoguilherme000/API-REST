@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "168199278203",
+    "project_id": "mycity-b3f7c",
+    "storage_bucket": "mycity-b3f7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168199278203:android:955ec652c856f76268dcde",
+        "android_client_info": {
+          "package_name": "com.atividade.mycity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLkkc69JzY_FyiG_KDZGU76pwGqBN0yP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

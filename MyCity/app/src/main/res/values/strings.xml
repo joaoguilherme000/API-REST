@@ -44,5 +44,32 @@
     </string>
     <string name="descreva_o_que_aconteceu">Descreva o que aconteceu</string>
     <string name="icone_alerta">Icone alerta</string>
-    <string name="add_image_adicionar">adicionar imagem do acontecimento</string>
+    <string name="add_image_adicionar">adicionar imagem do acontecimento da sua cidade</string>
+    <string name="botao_de_login">botão de login</string>
+    <string name="esqueci_a_senha">Esqueci a senha</string>
+    <string name="hint_senha">**********</string>
+    <string name="senha">Senha</string>
+    <string name="icone_email">icone email</string>
+    <string name="email_email_com">Email@email.com</string>
+    <string name="endere_o_de_email">Endereço de email</string>
+    <string name="icone_email_login">icone email login</string>
+    <string name="bem_vindo">Bem vindo</string>
+    <string name="logo">logo</string>
+    <string name="minha_cidade">MINHA CIDADE</string>
+    <string name="slogan">Por uma cidade melhor</string>
+    <string name="botao_de_cadastrar">botão de cadastrar</string>
+    <string name="termos_nota">Criando sua conta você aceita os Termos e Condições e aceita as Politicas de Privacidade</string>
+    <string name="desc_oceano">foto de um desenho do oceano</string>
+    <string name="cadastre_se_para_continuar">Cadastre-se para continuar</string>
+    <string name="botao_de_voltar">Botão de voltar</string>
+    <string name="nome">Nome</string>
+    <string name="email">Email</string>
+    <string name="nome_do_usuario">Nome do Usuario</string>
+    <string name="foto_de_perfil">foto de perfil</string>
+    <string name="alterar_foto">Alterar foto</string>
+    <string name="alterar_nome_de_usuario">alterar nome de usuario</string>
+    <string name="excluir_conta">Excluir conta</string>
+    <string name="botao_de_adicionar_problema">botão de adicionar problema</string>
+    <string name="imagem_do_acontecimento">imagem do acontecimento</string>
+    <string name="descricao">Descrição</string>
 </resources>

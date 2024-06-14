@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -10,14 +11,15 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Nome do Usuario"
+            android:text="@string/nome_do_usuario"
             android:textSize="18sp" />
 
         <!-- Profile Picture -->
@@ -26,7 +28,7 @@
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_marginTop="35dp"
-            android:contentDescription="Profile Picture"
+            android:contentDescription="@string/foto_de_perfil"
             android:src="@drawable/ic_perfil" />
 
         <LinearLayout
@@ -35,7 +37,8 @@
             android:layout_marginTop="25dp"
             android:clickable="true"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/change_photo_button"
@@ -43,19 +46,19 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="Alterar foto"
+                android:contentDescription="@string/alterar_foto"
                 android:src="@drawable/ic_camera" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Alterar foto"
+                android:text="@string/alterar_foto"
                 android:textSize="18sp" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/change_username_button"
+            android:id="@+id/alterar_username_button"
             style="@style/CustomButtonStyle"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
@@ -63,7 +66,20 @@
             android:background="@drawable/button_background"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Alterar nome de Usuário"
+            android:text="@string/alterar_nome_de_usuario"
+            android:textColor="#6A6A6A"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/delete_user"
+            style="@style/CustomButtonStyle"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/button_background"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/excluir_conta"
             android:textColor="#6A6A6A"
             android:textSize="18sp" />
 

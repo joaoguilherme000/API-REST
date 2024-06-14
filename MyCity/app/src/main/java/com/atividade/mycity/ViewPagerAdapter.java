@@ -12,14 +12,10 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position) {
-            case 0:
-                return new ProblemasFragment();
-            case 1:
-                return new ResolvidosFragment();
-            default:
-                return new ProblemasFragment();
+        if (position == 1) {
+            return new ResolvidosFragment();
         }
+        return new ProblemasFragment();
     }
 
     @Override
