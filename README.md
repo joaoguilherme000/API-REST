@@ -1,8 +1,7 @@
 # API-REST
 aplicativo com api
 
-## - criar um banco de dados
-## - mudar o user na pasta includes / Constant (dentro de HeroApi)
-## - colocar heroAPI dentro de htdocs
-## - colocar ip da maquina tipo assim => http://10.67.96.75/heroapi/v1/Api.php?apicall=getheroes
-## - colocar na api do android studio => private static final String ROOT_URL = "http://10.67.96.75/heroapi/v1/Api.php?apicall=";
+## - usar o banco de dados pronto no phpmyadmin banco.sql
+## - colocar o projeto dentro de htdocs api e mycity separados assim -> C:\xampp\htdocs\Api e assim -> C:\xampp\htdocs\MyCity
+## - colocar ip da maquina tipo assim => http://SEU_IP_AQUI/api/v1/Api.php?apicall=
+## - colocar na api do android studio => private static final String ROOT_URL = "http://SEU_IP_AQUI/api/v1/Api.php?apicall=";
