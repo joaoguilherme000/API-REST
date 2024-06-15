@@ -38,9 +38,9 @@ class DbOperation {
 		return $users; 
 	}
 
-	function createuser($nome, $email, $senha){
-		$stmt = $this->con->prepare("INSERT INTO users (nome, email, senha) VALUES (?, ?, ?)");
-		$stmt->bind_param("sss", $nome, $email, $senha);
+	public function createuser($nome, $email, $senha, $fotoPerfil) {
+		$stmt = $this->con->prepare("INSERT INTO users (nome, email, senha, fotoPerfil) VALUES (?, ?, ?, ?)");
+		$stmt->bind_param("ssss", $nome, $email, $senha, $fotoPerfil);
 		if($stmt->execute())
 			return true; 
 		return false; 

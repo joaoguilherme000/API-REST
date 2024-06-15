@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,33 +18,25 @@ import javax.net.ssl.HttpsURLConnection;
 public class RequestHandler {
 
     public String sendPostRequest(String requestURL,
-                                  HashMap<String, String> postDataParams) {
-        //Criando a URL
+      HashMap<String, String> postDataParams) {
         URL url;
 
-        //StringBuilder objeto utilizado para armazenar a mensagem recuperada do servidor
         StringBuilder sb = new StringBuilder();
         try {
-            //Inicializando Url
             url = new URL(requestURL);
 
-            //criando uma conexão httmlurl
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-            //configurando as propriedades da conexão
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
 
-            //criando o fluxo de saída
             OutputStream os = conn.getOutputStream();
 
-            //escrevendo parâmetros de request
-            //Utilizando o método getPostDataString
             BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
+                    new OutputStreamWriter(os, StandardCharsets.UTF_8));
             writer.write(getPostDataString(postDataParams));
 
             writer.flush();
@@ -56,7 +49,6 @@ public class RequestHandler {
                 BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 sb = new StringBuilder();
                 String response;
-                //lendo a resposta do servidor https
                 while ((response = br.readLine()) != null) {
                     sb.append(response);
                 }
@@ -77,9 +69,9 @@ public class RequestHandler {
 
             String s;
             while ((s = bufferedReader.readLine()) != null) {
-                sb.append(s + "\n");
+                sb.append(s).append("\n");
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return sb.toString();
     }

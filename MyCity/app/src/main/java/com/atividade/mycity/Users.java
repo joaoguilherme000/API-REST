@@ -4,9 +4,6 @@ public class Users {
     private int id;
     private String nome, email, senha;
 
-    public Users() {
-    }
-
     public Users(int id, String nome, String email, String senha) {
         this.id = id;
         this.nome = nome;

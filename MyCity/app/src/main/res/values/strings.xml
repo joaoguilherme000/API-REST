@@ -72,4 +72,9 @@
     <string name="botao_de_adicionar_problema">botão de adicionar problema</string>
     <string name="imagem_do_acontecimento">imagem do acontecimento</string>
     <string name="descricao">Descrição</string>
+    <string name="inicio">Início</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="perfil">Perfil</string>
+    <string name="novo_username">novo nome de usuario</string>
+    <string name="check">check</string>
 </resources>

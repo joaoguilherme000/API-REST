@@ -26,14 +26,15 @@
 				if (isTheseParametersAvailable(array('nome', 'email', 'senha'))) {
 					$nome = $_POST['nome'];
 					$email = $_POST['email'];
+					$fotoPerfil = "";
 					$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 	
 					require_once '../includes/DbConnect.php';
 					$db = new DbConnect();
 					$conn = $db->connect();
 	
-					$stmt = $conn->prepare("INSERT INTO users (nome, email, senha) VALUES (?, ?, ?)");
-					$stmt->bind_param("sss", $nome, $email, $senha);
+					$stmt = $conn->prepare("INSERT INTO users (nome, email, senha, fotoPerfil) VALUES (?, ?, ?, ?)");
+					$stmt->bind_param("ssss", $nome, $email, $senha, $fotoPerfil);
 	
 					if ($stmt->execute()) {
 						$response = array('error' => false, 'message' => 'Usuário registrado com sucesso');
@@ -101,25 +102,32 @@
 					break;
 		
 			case 'updateuser':
-
-				isTheseParametersAvailable(array('id','nome','email','senha'));
-				$db = new DbOperation();
-				$result = $db->updateUser(
-					$_POST['id'],
-					$_POST['nome'],
-					$_POST['email'],
-					$_POST['senha']
-				);
-				
-				if($result){
-					$response['error'] = false; 
-					$response['message'] = 'atualizado com sucesso';
-					$response['users'] = $db->getUsers();
-				}else{
-					$response['error'] = true; 
-					$response['message'] = 'Algum erro ocorreu por favor tente novamente';
+				if (isTheseParametersAvailable(array('id', 'nome'))) {
+					$id = $_POST['id'];
+					$nome = $_POST['nome'];
+			
+					require_once '../includes/DbConnect.php';
+					$db = new DbConnect();
+					$conn = $db->connect();
+			
+					$stmt = $conn->prepare("UPDATE users SET nome = ? WHERE id = ?");
+					$stmt->bind_param("si", $nome, $id);
+			
+					if ($stmt->execute()) {
+						$response['error'] = false;
+						$response['message'] = 'Nome de usuário atualizado com sucesso';
+					} else {
+						$response['error'] = true;
+						$response['message'] = 'Erro ao atualizar nome de usuário';
+					}
+			
+					$stmt->close();
+					$conn->close();
+				} else {
+					$response['error'] = true;
+					$response['message'] = 'Parâmetros faltando';
 				}
-			break; 
+			break;
 			
 			
 			case 'deleteuser':
@@ -226,6 +234,36 @@
 						$response = array('error' => true, 'message' => 'Método não permitido');
 					}
 					break;
+
+					case 'getResolvido':
+						if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+							require_once '../includes/DbConnect.php';
+							$db = new DbConnect();
+							$conn = $db->connect();
+						
+							$stmt = $conn->prepare("SELECT id, problema_id, fotoResolvida, descricaoResolvida FROM resolvidos");
+							$stmt->execute();
+							$stmt->bind_result($id,$problema_id, $fotoResolvida, $descricaoResolvida);
+						
+							$problemas = array();
+						
+							while ($stmt->fetch()) {
+								$resolvido = array();
+								$resolvido['id'] = $id;
+								$resolvido['problema_id'] = $id;
+								$resolvido['fotoResolvida'] = $fotoResolvida;
+								$resolvido['descricaoResolvida'] = $descricaoResolvida;
+								$resolvidos[] = $resolvido;
+							}
+					
+							// Log para verificar o resultado antes de enviar
+							error_log("Lista de resolvido obtida: " . json_encode($resolvidos));
+						
+							$response = array('error' => false, 'resolvidos' => $resolvidos);
+						} else {
+							$response = array('error' => true, 'message' => 'Método não permitido');
+						}
+						break;
 
 				case 'verImagens':
 					if (isset($_GET['id'])) {

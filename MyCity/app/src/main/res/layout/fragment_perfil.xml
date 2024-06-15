@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:id="@+id/fragment_perfil"
     android:padding="16dp">
 
     <LinearLayout
@@ -16,10 +17,12 @@
 
         <TextView
             android:id="@+id/username"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:inputType="text"
+            android:singleLine="true"
             android:text="@string/nome_do_usuario"
+            android:textAlignment="center"
             android:textSize="18sp" />
 
         <!-- Profile Picture -->
@@ -36,18 +39,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
             android:orientation="horizontal"
             tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                android:id="@+id/change_photo_button"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/alterar_foto"
-                android:src="@drawable/ic_camera" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,7 +50,25 @@
                 android:layout_gravity="center_vertical"
                 android:text="@string/alterar_foto"
                 android:textSize="18sp" />
+
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/alterar_foto"
+                android:src="@drawable/ic_check" />
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/edit_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/novo_username"
+            android:layout_marginTop="25dp"
+            android:padding="10dp"
+            android:textSize="18sp"/>
 
         <Button
             android:id="@+id/alterar_username_button"

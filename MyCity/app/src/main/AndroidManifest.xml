@@ -47,10 +47,6 @@
             android:exported="false"
             android:theme="@style/Theme.MyCity" />
         <activity
-            android:name=".AtualizacaoFragment"
-            android:exported="false"
-            android:theme="@style/Theme.MyCity" />
-        <activity
             android:name=".AdicionarFragment"
             android:exported="false"
             android:theme="@style/Theme.MyCity" />
@@ -60,15 +56,15 @@
             android:theme="@style/Theme.MyCity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".LaunchActivity"
-            android:exported="true"/>
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     </application>
 
 </manifest>

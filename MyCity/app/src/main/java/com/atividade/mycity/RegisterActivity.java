@@ -1,6 +1,7 @@
 package com.atividade.mycity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -43,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         String nome = nomeEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();
         String senha = senhaEditText.getText().toString().trim();
+        String fotoPerfil = "";
 
         if (TextUtils.isEmpty(nome)) {
             nomeEditText.setError("Por favor entre com o nome");
@@ -62,17 +64,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("nome", nome);
-        params.put("senha", senha);
         params.put("email", email);
+        params.put("senha", senha);
+        params.put("fotoPerfil", fotoPerfil);
         PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_CREATE_USER, params, CODE_POST_REQUEST);
         request.execute();
     }
-
-    private void lerUser() {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_USERS, null, CODE_GET_REQUEST);
-        request.execute();
-    }
-
 
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
@@ -94,6 +91,12 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
                 // depois de dar certo ele entra
                 if (!obj.getBoolean("error")) {
+                    // Salva o nome do usuário no SharedPreferences
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("username", params.get("nome"));
+                    editor.apply();
+
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish(); // Finaliza a atividade de registro para não retornar pra ela pressionando Voltar
